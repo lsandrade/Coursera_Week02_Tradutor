@@ -12,6 +12,7 @@ import org.junit.Test;
  * (x) Duas traduções
  * (x) Duas traduções mesma palavra
  * (x) Traduzir frases
+ * (x) Traduzir frase c/ 2 traduções para mesma palavra
  */
 
 public class TesteTradutor {
@@ -59,7 +60,16 @@ public class TesteTradutor {
 		t.adicionaTraducao("ruim", "bad");
 		
 		assertEquals("war is bad",t.traduzirFrase("guerra é ruim"));
+	}
+	
+	@Test
+	public void testTraduzirFraseComDuasTraducoesMesmaPalavra(){
+		t.adicionaTraducao("paz","peace");
+		t.adicionaTraducao("é","is");
+		t.adicionaTraducao("bom", "good");
+		t.adicionaTraducao("bom", "nice");
 		
+		assertEquals("peace is good",t.traduzirFrase("paz é bom"));
 	}
 		
 }
