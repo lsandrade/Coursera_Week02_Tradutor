@@ -11,11 +11,22 @@ public class Tradutor {
 	}
 
 	public void adicionaTraducao(String palavra, String traducao) {
-		this.traducoes.put(palavra, traducao);
+		if(traducoes.containsKey(palavra)){
+			traducao = traduzir(palavra) + ", " + traducao; 
+		}
+		traducoes.put(palavra, traducao);
 	}
 
 	public String traduzir(String palavra) {
-		return this.traducoes.get(palavra);
+		return traducoes.get(palavra);
+	}
+
+	public String traduzirFrase(String frase) {
+		String[] palavras = frase.split(" ");
+		String fraseTraduzida = "";
+		for(String palavra : palavras)
+			fraseTraduzida+= traduzir(palavra)+" ";
+		return fraseTraduzida.trim();
 	}
 
 }

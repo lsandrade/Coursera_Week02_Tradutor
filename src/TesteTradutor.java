@@ -5,6 +5,14 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+/*
+ * Cenários:
+ * (x) Tradutor sem palavras
+ * (x) Uma tradução
+ * (x) Duas traduções
+ * (x) Duas traduções mesma palavra
+ * (x) Traduzir frases
+ */
 
 public class TesteTradutor {
 	
@@ -34,6 +42,23 @@ public class TesteTradutor {
 		
 		assertEquals("good",t.traduzir("bom"));
 		assertEquals("bad",t.traduzir("mau"));
+	}
+	
+	@Test
+	public void testDuasTraducoesMesmaPalavra(){
+		t.adicionaTraducao("bom","good");
+		t.adicionaTraducao("bom","nice");
+		
+		assertEquals("good, nice",t.traduzir("bom"));	
+	}
+	
+	@Test
+	public void testTraduzirFrase(){
+		t.adicionaTraducao("guerra","war");
+		t.adicionaTraducao("é","is");
+		t.adicionaTraducao("ruim", "bad");
+		
+		assertEquals("war is bad",t.traduzirFrase("guerra é ruim"));
 		
 	}
 		
